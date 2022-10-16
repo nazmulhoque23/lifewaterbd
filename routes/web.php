@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\Dahsboard\CategoryController;
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +27,8 @@ Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('ho
 Route::get('/admin/home', [App\Http\Controllers\Dahsboard\HomeController::class, 'index'])->name('admin.index');//->middleware('admin');
 
 //Dashboard
-Route::get('/admin/category', [App\Http\Controllers\Dahsboard\CategoryController::class, 'index'])->name('dashboard.category.index');
+//Route::get('/admin/categories', [CategoryController::class, 'index'])->name('dashboard.categories.index');
+//Route::post('/store', [App\Http\Controllers\Dahsboard\CategoryController::class, 'store']);
+
+Route::resource('/admin/categories', CategoryController::class);
+//Route::post('/admin/categories', 'App\Http\Controllers\Dahsboard\CategoryController@store');

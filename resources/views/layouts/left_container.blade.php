@@ -56,14 +56,9 @@
               </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="" class="nav-link active">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Basic Info</p>
-                </a>
-              </li>
+              
               <li class="nav-item menu-open">
-            <a href="{{route('dashboard.category.index')}}" class="nav-link">
+            <a href="{{route('categories.index')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
                 Category
@@ -71,29 +66,8 @@
             </a>
           </li>
             
-            
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Fee Setup</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="" class="nav-link">
-                  <i class="far fa-circle nav-icon"></i>
-                  <p>Form Setting</p>
-                </a>
-              </li>
-            </ul>
+          </ul>
           </li>
-          <li class="nav-item menu-open">
-            <a href="#" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-              Applicant Info
-                <i class="right fas fa-angle-left"></i>
-              </p>
-            </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link active">
@@ -117,7 +91,7 @@
                 <i class="right fas fa-angle-left"></i>
               </p>
             </a>
-            <ul class="nav nav-treeview">
+            <!--<ul class="nav nav-treeview">
               <li class="nav-item">
                 <a href="" class="nav-link active">
                   <i class="far fa-circle nav-icon"></i>
@@ -130,7 +104,7 @@
                   <p>Settlement Info</p>
                 </a>
               </li>
-            </ul>
+            </ul>-->
           </li>
           <li class="nav-item menu-open">
             <a href="{{route('logout')}}" class="nav-link active">
