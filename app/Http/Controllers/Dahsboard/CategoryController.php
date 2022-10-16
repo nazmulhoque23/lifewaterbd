@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dahsboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Category;
+use App\Models\SubCategory;
 use Illuminate\Http\Request;
 
 class CategoryController extends Controller
@@ -15,7 +16,7 @@ class CategoryController extends Controller
      */
     public function index()
     {
-        $categories = Category::get();
+        $categories = Category::with('subCategory')->get();
         return view('dashboard.categories.index', compact('categories'));
     }
 
@@ -40,15 +41,23 @@ class CategoryController extends Controller
         $request->validate([
             'cat_name'=>'required',
         ]);
-        $input = $request->all();
-        
-        //$categories = new Category();
-        //$categories->cat_name = $request->input('cat_name');
+        //$input = $request->all();
+        if(!$request->get('category_id') == null){
+            $subCats = new SubCategory();
+            $subCats->name= $request->input('cat_name');
+            $subCats->category_id = $request->get('category_id');
+            $subCats->save();
+        }
+        else{
+            $category = new Category();
+            $category->cat_name = $request->input('cat_name');
 
-        //$categories->save();
+            $category->save();
 
         
-        Category::create($input);
+        }
+        
+        //Category::create($input);
         return redirect()->back()->with('success');
     }
 

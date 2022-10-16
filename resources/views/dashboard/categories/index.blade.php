@@ -34,18 +34,7 @@
                             </div>
                             
                                
-<form action = "{{ route('categories.store') }}" method = "POST">
-    @csrf
-    <div class="modal-body">
-    <div class="form-group">
-        <label for="cat_name">Name</label>
-        <input type="cat_name" class="form-control" id="cat_name" placeholder="Enter name">
-    </div>
-    
-    <button type="submit" class="btn btn-primary">Submit</button>
-    </div>
-</form>
-
+                            @include('dashboard.categories.form')
                             
                             
                         </div>
@@ -64,6 +53,7 @@
     <table style= "border: 1px solid black; border-collapse: collapse; margin-left:5px;" class="table table-bordered" >
         <tr>
             <th>Category Name</th>
+            <th>Sub-Categories</th>
             
             
             <th width="280px">Action</th>
@@ -71,6 +61,13 @@
         @foreach ($categories as $category)
         <tr>
             <td>{{ $category->cat_name }}</td>
+            <td>
+                <ul class = "sclist" style="list-style: none;">
+                    @foreach($category->subCategory as $sCategory)
+                        <li><i class = "fa fa-caret-right"></i>{{$sCategory->name}}</li>
+                    @endforeach    
+                </ul>
+            </td>
             
             <td>
                 <form action="" method="POST">
