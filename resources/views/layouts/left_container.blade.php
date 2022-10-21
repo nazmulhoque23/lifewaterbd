@@ -81,6 +81,7 @@
                   <p>Details</p>
                 </a>
               </li>
+              
             </ul>
           </li>
           <li class="nav-item menu-open">
@@ -107,13 +108,17 @@
             </ul>-->
           </li>
           <li class="nav-item menu-open">
-            <a href="{{route('logout')}}" class="nav-link active">
-              <i class="nav-icon fas fa-tachometer-alt"></i>
-              <p>
-                Logout
-              </p>
-            </a>
+          <a href="{{ route('logout') }}" class="nav-link" onclick="event.preventDefault();document.getElementById('frm-logout').submit();">
+          <i class="far fa-circle nav-icon"></i>
+                  <p>Log out</p>
+          </a>    
+                        
+          <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+            {{ csrf_field() }}
+          
+          </form>
           </li>
+          
         </ul>
       </nav>
       <!-- /.sidebar-menu -->

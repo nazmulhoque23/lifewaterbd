@@ -15,23 +15,17 @@ class DatabaseSeeder extends Seeder
     public function run()
     {
         // \App\Models\User::factory(10)->create();
-        $userData = [
+        $userData = 
             [
                'name'=>'Admin',
-               'email'=>'lifewaterbd@gmail.com',
+               'email'=>'admin@gmail.com',
                 'is_admin'=>'1',
+                'mobile_no'=>'01850320559',
                'password'=> bcrypt('12345678'),
-            ],
-            [
-               'name'=>'Regular User',
-               'email'=>'reguser@gmail.com',
-                'is_admin'=>'0',
-               'password'=> bcrypt('12345678'),
-            ],
-        ];
+            ];
   
-        foreach ($userData as $key => $val) {
-            User::create($val);
-        }
+        
+            User::create($userData);
+        
     }
 }

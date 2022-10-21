@@ -21,6 +21,16 @@
                     </div>
                     <div class="col-md-3">
                       <div class="row">
+                        @if(auth()->check())
+                        <div class="col-md-6">
+                        <li><a class="nav-link font-weight-bold" href="#"></i> {{Auth::user()->name}}:
+                        <a href="{{ route('logout') }}" onclick="event.preventDefault();document.getElementById('frm-logout').submit();"><button type="button" class="btn logreg">Logout</button></a>    
+                        <form id="frm-logout" action="{{ route('logout') }}" method="POST" style="display: none;">
+                          {{ csrf_field() }}
+                        </form>
+                        </li>   
+                      </div>
+                        @else
                         <div class="col-md-6">
                            <!-- Button trigger modal -->
                           <button type="button" class="btn logreg" data-bs-toggle="modal" data-bs-target="#logregModal">
@@ -28,6 +38,7 @@
                               <path d="M8 8a3 3 0 1 0 0-6 3 3 0 0 0 0 6zm2-3a2 2 0 1 1-4 0 2 2 0 0 1 4 0zm4 8c0 1-1 1-1 1H3s-1 0-1-1 1-4 6-4 6 3 6 4zm-1-.004c-.001-.246-.154-.986-.832-1.664C11.516 10.68 10.289 10 8 10c-2.29 0-3.516.68-4.168 1.332-.678.678-.83 1.418-.832 1.664h10z"/>
                             </svg>Login/Register
                           </button>
+                        @endif                          
                         </div>
                         <div class="col-md-6">
                           <div class="card-icon">
@@ -50,23 +61,53 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                   </div>
                   <div class="modal-body">
-                    <form>
-                      <div class="mb-3 col-md-12">
-                        <label for="exampleInputEmail1" class="form-label">Email address</label>
-                        <input type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                      </div>
-                      <div class="mb-3 col-md-12">
-                        <label for="exampleInputPassword1" class="form-label">Password</label>
-                        <input type="password" class="form-control" id="exampleInputPassword1">
-                      </div>
-                      <div class="submit text-center">
-                        <button type="submit" class="btn text-center">Submit</button>
-                      </div>
+                  <form method="POST" action="{{ route('login') }}">
+                        @csrf
+
+                        <div class="row mb-3">
+                            <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+
+                                @error('email')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="password" class="col-md-4 col-form-label text-md-end">{{ __('Password') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
+
+                                @error('password')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                       
+
+                        <div class="row mb-0">
+                            <div class="col-md-8 offset-md-4">
+                                <button type="submit" class="btn btn-primary">
+                                    {{ __('Login') }}
+                                </button>
+
+                          
+                            </div>
+                        </div>
                     </form>
                     <div class="forget">
                       <a href="#">Forgot Your Password?</a>
                       <p class="or">or</p>
-                      <a href="#" class="signin">create an account</a>
+                      <a href="{{route('register')}}" class="signin">create an account</a>
                     </div>
                   </div>
                 </div>

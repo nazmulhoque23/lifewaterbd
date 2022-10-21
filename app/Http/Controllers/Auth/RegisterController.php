@@ -52,7 +52,9 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
+            'mobile_no'=>['required', 'string', 'min:11'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            
         ]);
     }
 
@@ -64,10 +66,14 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        return User::create([
+        $user = User::create([
             'name' => $data['name'],
             'email' => $data['email'],
+            'mobile_no'=>$data['mobile_no'],
             'password' => Hash::make($data['password']),
         ]);
+
+        return view('dashboard.index');
+        //return redirect()->route('dashboard.index')->with(['success' => 'Congratulations! your account is registered, you will shortly receive an email to activate your account.']);
     }
 }

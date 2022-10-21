@@ -16,10 +16,14 @@ class Admin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(auth()->user()->is_admin == 1){
+        if(auth()->user()->is_admin == NULL || auth()->user()->is_admin == 0){
+            return redirect()->route('home');
+        }
+        else {
+            
             return $next($request);
         }
    
-        return redirect('home')->with('error',"Only admin can access!");
+        return redirect()->route('home')->with('error',"Only admin can access!");
     }
 }

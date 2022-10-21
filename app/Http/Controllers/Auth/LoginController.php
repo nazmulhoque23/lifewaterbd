@@ -42,14 +42,20 @@ class LoginController extends Controller
     public function login(Request $request)
     {  
         $request->validate([
-            'email' => 'required|string|email',
-            'password' => 'required|string',
+            'logemail' => 'required|string|email',
+            'logpassword' => 'required|string',
         ]);
 
-        $credentials = $request->only('email', 'password');
+        $credentials = $request->only('logemail', 'logpassword');
 
         if (Auth::attempt($credentials)) {
-            return redirect()->intended(route('admin.index'));
+            if(Auth::user()->is_admin == 1){
+                return redirect()->route('admin.index');
+            }
+            else{
+                return redirect()->route('home');
+            }
+            
         }
         else{
           return back()->with('error','Wrong Login Details');
