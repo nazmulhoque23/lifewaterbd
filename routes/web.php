@@ -3,6 +3,8 @@
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Dahsboard\CategoryController;
+use App\Http\Controllers\Dahsboard\ProductController;
+use App\Http\Controllers\Dahsboard\BrandController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,6 +24,7 @@ use App\Http\Controllers\Dahsboard\CategoryController;
 Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::get('/{id}',[App\Http\Controllers\HomeController::class, 'show'])->name('productview');
 //Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'handleAdmin'])->name('admin.route');//->middleware('admin');
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'index'])->name('login');
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'store']);
@@ -37,4 +40,7 @@ Route::get('/admin/home', [App\Http\Controllers\Dahsboard\HomeController::class,
 //Route::post('/store', [App\Http\Controllers\Dahsboard\CategoryController::class, 'store']);
 
 Route::resource('/admin/categories', CategoryController::class)->middleware('admin');
+Route::resource('/admin/brands', BrandController::class)->middleware('admin');
+Route::resource('/admin/products', ProductController::class)->middleware('admin');
+
 //Route::post('/admin/categories', 'App\Http\Controllers\Dahsboard\CategoryController@store');
