@@ -80,7 +80,7 @@
                     </tr>
 
                 </table>
-                <button type="button" class="btn btn-primary btn-sm"
+                <button type="button" class="btn btn-dark"
                     style="backgroung-color:green; width:30%; margin-left:20px; margin-bottom:10px;">EMI Bank
                     Details</button>
 
@@ -94,9 +94,9 @@
 
                         </tr>
                     </table>
-                    <button type="button" class="btn btn-success"
+                    <button type="button" class="btn btn-warning"
                         style=" width:30%; margin-left:20px; margin-bottom:10px;">Add to Cart</button>
-                    <button type="button" class="btn btn-primary"
+                    <button type="button" class="btn btn-dark"
                         style=" width:30%; margin-left:20px; margin-bottom:10px;">Buy Now</button>
                 </div>
 
@@ -129,7 +129,7 @@
                 <img src="/frontend/images/return-30x30.webp" alt="">
                 <p><b>Return And Warranty</b></p>
                 <p>7 Days Return</p>
-                <p>Warranty Not Available</p>
+                <p>{{$product->warranty}}</p>
             </div>
         </div>
     </div>
