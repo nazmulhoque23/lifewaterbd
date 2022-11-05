@@ -74,7 +74,7 @@
     </div>
 
     <div class="form-group col-md-4">
-        <label>Select Features</label>
+        <label>Select Separation</label>
             <select type="text" name="features" class="form-control">
                 <option value="">None</option>
                 <option value="new arrival">New Arrival</option>

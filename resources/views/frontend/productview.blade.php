@@ -42,10 +42,11 @@
                         {{$product->name}}</b>
                 </p>
 
-                <p style="margin-left:20px; margin-top:20px; font-size:20px; font-weight:700; color:blue;">
-                    <img src="frontend/images/tk.jpeg" style="width:7%; height:7%" alt="">{{$product->price}}</p>
+                <p style="margin-left:20px; margin-top:20px; font-size:27px; font-weight:700; color:blue;">
+                    <img src="frontend/images/tk.jpeg" style="width:7%; height:7%" alt="">{{$product->price}}
+                </p>
                 <p style="margin-left:20px; margin-top:10px; font-size:15px; font-weight:700;">
-                    {{$product->description}}</p>
+                    {{$product->summary}}</p>
                 <table style="width:96%;  margin-left:10px; font-weight:700; font-size:20px;"
                     class="table table-striped">
                     <tr>
@@ -125,21 +126,46 @@
                 </div>
             </div>
 
-            <div class = "col-md-3" style="margin-top: 20px;">
+            <div class="col-md-3" style="margin-top: 20px;">
                 <img src="/frontend/images/return-30x30.webp" alt="">
                 <p><b>Return And Warranty</b></p>
                 <p>7 Days Return</p>
                 <p>{{$product->warranty}}</p>
             </div>
         </div>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="justify-contents:center; margin-left:50px; font-size:20px;">
+
+            <div class="collapse navbar-collapse" id="navbarNavDropdown">
+                <ul class="navbar-nav">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">Description <p></p><p>{{$product->description}}</p></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Additional Information</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Features</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Benefits</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Remove Germs and chemicals</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">Shipping Information</a>
+                    </li>
+                </ul>
+            </div>
+        </nav>
+    
+    
     </div>
 
+    
 
 
 
-
-
-    @include('frontend.utils.clients')
 
     <!-- footer -->
     @include('frontend.utils.footer')

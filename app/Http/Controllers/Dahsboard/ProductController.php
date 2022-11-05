@@ -64,4 +64,26 @@ class ProductController extends Controller
         return redirect()->back()->with('success');
     }
 
+    
+
+    public function update(Request $request, $id)
+    {
+        $product = Product::find($id);
+        $input = $request->all();
+
+        if($image = $request->file('image'))
+        {
+            $destinationPath = 'frontend/images/products/';
+            $profileImage = date('YmdHis') . ".". $image->getClientOriginalExtension();
+            $image->move($destinationPath, $profileImage);
+            $input['image'] = "$profileImage";
+        }
+        else{
+            unset($input['image']);
+        }
+        $product->save($input);
+
+        return redirect()->back()->with('success');
+    }
+
 }   

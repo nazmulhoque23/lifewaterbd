@@ -44,6 +44,11 @@
         </div>
     </div>
     
+
+    
+
+
+
     @if ($message = Session::get('success'))
         <div class="alert alert-success">
             <p>{{ $message }}</p>
@@ -59,7 +64,7 @@
             <th>Brand</th>
             <th>Category</th>
             <th>Membrane</th>
-            <th>Features</th>
+            <th>Separation</th>
             <th>Image</th>
             <th width="280px">Action</th>
         </tr>
@@ -73,15 +78,33 @@
             <td>{{ $product->brand->name }}</td>
             <td>{{ $product->category->name }}</td>
             <td>{{ $product->membrane }}</td>
-            <td>{{ $product->features }}</td>
+            <td>{{ $product->separation }}</td>
             <td><img src="/frontend/images/products/{{ $product->image }}" width="100px"></td>
             <td>
                 <form action="" method="POST">
      
                     <a class="btn btn-info" href="">Show</a>
       
-                    <a class="btn btn-primary" href="">Edit</a>
-     
+                    <!--EDIT MODAL-->
+                    
+                    <a class="btn btn-primary" data-target="#editModal{{$product->id}}" data-toggle="modal">Edit</a>
+                    <div class="modal fade" id="editModal{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog" role="document">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title" id="exampleModalLabel">Product Edit</h5>
+                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                                
+                                   
+                                @include('dashboard.products.edit')
+                                
+                                
+                            </div>
+                        </div>
+                    </div>
                     @csrf
                     @method('DELETE')
         

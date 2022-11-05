@@ -25,7 +25,7 @@ class CreateProductsTable extends Migration
             $table->string('capacity')->nullable();
             $table->string('dimension')->nullable();
             $table->string('technology');
-            $table->string('features')->nullable();
+            $table->string('separation')->nullable();
             $table->string('benefits')->nullable();
             $table->string('warranty');
             //relation to subcategory, 
