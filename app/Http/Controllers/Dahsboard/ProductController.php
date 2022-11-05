@@ -83,9 +83,15 @@ class ProductController extends Controller
         else{
             unset($input['image']);
         }
-        $product->save($input);
+        $product->update($input);
 
-        return redirect()->back('dashboard.products.index');
+        return redirect()->back()->with('success');
+    }
+
+    public function destroy($id)
+    {
+        Product::find($id)->delete();
+        return redirect()->back();
     }
 
 }   

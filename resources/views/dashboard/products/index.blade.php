@@ -81,35 +81,37 @@
             <td>{{ $product->separation }}</td>
             <td><img src="/frontend/images/products/{{ $product->image }}" width="100px"></td>
             <td>
-                <form action="" method="POST">
+
+                <form action="{{route('products.destroy', $product->id)}}" method="POST">
      
-                   
-      
-                    <!--EDIT MODAL-->
-                    
-                    <a class="btn btn-primary" data-target="#editModal{{$product->id}}" data-toggle="modal">Edit</a>
-                    <div class="modal fade" id="editModal{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <div class="modal-dialog" role="document">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="exampleModalLabel">Product Edit</h5>
-                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                </div>
-                                
-                                   
-                                @include('dashboard.products.edit')
-                                
-                                
-                            </div>
-                        </div>
-                    </div>
                     @csrf
                     @method('DELETE')
-        
                     <button type="submit" class="btn btn-danger">Delete</button>
+      
+                    
+                    
+                    
                 </form>
+                <!--EDIT MODAL-->
+                    
+                <button type="submit" class="btn btn-primary" data-target="#editModal{{$product->id}}" data-toggle="modal">Edit</button>
+                <div class="modal fade" id="editModal{{$product->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Product Edit</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            
+                               
+                            @include('dashboard.products.edit')
+                            
+                            
+                        </div>
+                    </div>
+                </div>
             </td>
         </tr>
         @endforeach
