@@ -19,7 +19,7 @@ class CreateProductsTable extends Migration
             $table->string('description')->nullable();
             $table->string('price')->nullable();
             $table->mediumText('image');
-
+            $table->string('summary')->nullable();
             $table->string('origin')->nullable();
             $table->string('membrane')->nullable();
             $table->string('capacity')->nullable();

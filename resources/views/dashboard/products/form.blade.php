@@ -13,10 +13,18 @@
         <label for="price">Price</label>
         <input type="price" class="form-control" id="price" name= "price" placeholder="Enter Product price">
     </div>
+    
+    <div class="form-group">
+        <label for="summary">Summary</label>
+        <input type="summary" class="form-control" id="summary" name= "summary" placeholder="Enter Product summary">
+    </div>
+
     <div class="form-group">
         <label for="origin">Origin</label>
         <input type="origin" class="form-control" id="origin" name= "origin" placeholder="Enter Product origin">
     </div>
+
+    
 
     <div class="form-group">
         <label for="membrane">Membrane</label>
@@ -42,7 +50,10 @@
         <label for="warranty">Warranty</label>
         <input type="warranty" class="form-control" id="warranty" name= "warranty" placeholder="Enter Product warranty">
     </div>
-
+    <div class="form-group">
+        <label for="benefits">Benefits</label>
+        <input type="benefits" class="form-control" id="benefits" name= "benefits" placeholder="Enter Product benefit">
+    </div>
     <div class="form-group col-md-4">
         <label>Select Brand</label>
             <select type="text" name="brand_id" class="form-control">
@@ -75,7 +86,7 @@
 
     <div class="form-group col-md-4">
         <label>Select Separation</label>
-            <select type="text" name="features" class="form-control">
+            <select type="text" name="separation" class="form-control">
                 <option value="">None</option>
                 <option value="new arrival">New Arrival</option>
                 <option value="special offers">Special Offers</option>

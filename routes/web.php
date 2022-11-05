@@ -41,5 +41,10 @@ Route::get('/admin/home', [App\Http\Controllers\Dahsboard\HomeController::class,
 
 Route::resource('/admin/categories', CategoryController::class)->middleware('admin');
 Route::resource('/admin/brands', BrandController::class)->middleware('admin');
-Route::resource('/admin/products', ProductController::class)->middleware('admin');
+//Route::resource('/admin/products', ProductController::class)->middleware('admin');
+
+Route::get('/admin/products',[ProductController::class, 'index'])->name('products.index')->middleware('admin');
+Route::post('/admin/products',[ProductController::class, 'store'])->name('products.store')->middleware('admin');
+Route::post('/admin/products/{product}',[ProductController::class, 'update'])->name('products.update')->middleware('admin');
+
 //Route::post('/admin/categories', 'App\Http\Controllers\Dahsboard\CategoryController@store');

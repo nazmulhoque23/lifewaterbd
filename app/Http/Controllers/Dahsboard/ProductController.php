@@ -25,12 +25,13 @@ class ProductController extends Controller
             'description'=>'required',
             'price'=>'required',
             'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg,webp',
+            'summary'=>'nullable',
             'origin'=>'nullable',
             'membrane'=>'nullable',
             'capacity'=>'nullable',
             'dimension'=>'nullable',
             'technology'=>'nullable',
-            'features'=>'required',
+            'separation'=>'required',
             'benefits'=>'nullable',
             'warranty'=>'required',
         ]);
@@ -47,13 +48,13 @@ class ProductController extends Controller
             $image->move($destinationPath, $profileImage);
             $product->image = "$profileImage";
         }
-
+        $product->summary = $request->input('summary');
         $product->origin = $request->input('origin');
         $product->membrane = $request->input('membrane');
         $product->capacity = $request->input('capacity');
         $product->dimension = $request->input('dimension');
         $product->technology = $request->input('technology');
-        $product->features = $request->input('features');
+        $product->separation = $request->input('separation');
         $product->benefits = $request->input('benefits');
         $product->warranty = $request->get('warranty');
         $product->category_id = $request->get('category_id');
@@ -68,6 +69,7 @@ class ProductController extends Controller
 
     public function update(Request $request, $id)
     {
+       
         $product = Product::find($id);
         $input = $request->all();
 
@@ -83,7 +85,7 @@ class ProductController extends Controller
         }
         $product->save($input);
 
-        return redirect()->back()->with('success');
+        return redirect()->back('dashboard.products.index');
     }
 
 }   

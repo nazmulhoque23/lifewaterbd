@@ -83,7 +83,7 @@
             <td>
                 <form action="" method="POST">
      
-                    <a class="btn btn-info" href="">Show</a>
+                   
       
                     <!--EDIT MODAL-->
                     

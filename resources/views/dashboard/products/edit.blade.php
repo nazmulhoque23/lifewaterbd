@@ -1,8 +1,6 @@
 
-            <form action = "{{ route('products.update', $product->id) }}" method = "post" enctype="multipart/form-data">
+            <form method = "POST" action = "{{ route('products.update', $product->id) }}"  enctype="multipart/form-data">
                 @csrf
-                @method('PUT')
-                
                 
                 <div class="modal-body">
                 <div class="form-group">
@@ -79,7 +77,7 @@
             
                 <div class="form-group col-md-4">
                     <label>Select Separation</label>
-                        <select type="text" name="features" class="form-control">
+                        <select type="text" name="separation" class="form-control">
                             <option value="{{$product->separation}}">{{$product->separation}}</option>
                             <option value="new arrival">New Arrival</option>
                             <option value="special offers">Special Offers</option>
