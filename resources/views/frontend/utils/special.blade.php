@@ -16,14 +16,14 @@
             <div class="product">
               <figure class="figure">
                 <a href="">
-                  <img src="frontend/images/household/12.jpg" alt="" class="">
+                  <img src="frontend/images/products/{{$product->image}}" alt="" class="">
                 </a>
               </figure>
               <div class="product-body" style="transform: translateY(0px);">
-                <h3 class="product-title">Sanaky Hot & Cold</h3>
+                <h3 class="product-title">{{$product->name}}</h3>
                 <div class="product-price">
-                  <span class="new-price">৳600</span>
-                  <span class="old-price">৳800</span>
+                  <span class="new-price">{{$product->price}}</span>
+                  <span class="old-price">{{$product->price}}-200</span>
                 </div>
               </div>
               <div class="product-footer" style="visibility: hidden;">
