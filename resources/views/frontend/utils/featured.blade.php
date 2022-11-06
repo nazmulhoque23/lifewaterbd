@@ -10,6 +10,9 @@
         </div>
         <div class="row">
           <div class="col-md-3">
+            @foreach($products as $product)
+            @if($product->separation == "featured")
+            
             <div class="product">
               <figure class="figure">
                 <a href="">
@@ -39,6 +42,8 @@
                 </a>
               </div>
             </div>
+            @endif
+            @endforeach
           </div>
         </div>
       </div>

@@ -10,6 +10,9 @@
         </div>
         <div class="row">
           <div class="col-md-3">
+
+            @foreach($products as $product)
+            @if($product->separation == "new arrival")
             <div class="product">
               <figure class="figure">
                 <a href="">
@@ -17,7 +20,7 @@
                 </a>
               </figure>
               <div class="product-body" style="transform: translateY(0px);">
-                <h3 class="product-title">Sanaky Hot & Cold</h3>
+                <h3 class="product-title">{{$product->name}}</h3>
                 <div class="product-price">
                   <span class="new-price">৳600</span>
                   <span class="old-price">৳800</span>
@@ -39,6 +42,8 @@
                 </a>
               </div>
             </div>
+            @endif
+            @endforeach
           </div>
         </div>
       </div>

@@ -133,35 +133,15 @@
                 <p>{{$product->warranty}}</p>
             </div>
         </div>
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="justify-contents:center; margin-left:50px; font-size:20px;">
 
-            <div class="collapse navbar-collapse" id="navbarNavDropdown">
-                <ul class="navbar-nav">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">Description <p></p><p>{{$product->description}}</p></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Additional Information</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Features</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Benefits</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Remove Germs and chemicals</a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">Shipping Information</a>
-                    </li>
-                </ul>
-            </div>
-        </nav>
+    
+
+       @include('frontend.utils.tab')
     
     
     </div>
-
+    <br/>
+    <br/>
     
 
 
