@@ -25,6 +25,12 @@ Auth::routes();
 
 Route::get('/', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::get('/{id}',[App\Http\Controllers\HomeController::class, 'show'])->name('productview');
+
+Route::get('/products/cart', [App\Http\Controllers\HomeController::class, 'cart'])->name('cartview');
+Route::get('/products/add-to-cart/{id}', [App\Http\Controllers\HomeController::class, 'addToCart'])->name('addtocart');
+Route::patch('/products/update-cart', [App\Http\Controllers\HomeController::class, 'update'])->name('updatecart');
+Route::delete('/products/delete-from-cart', [App\Http\Controllers\HomeController::class, 'remove'])->name('removeitem');
+
 //Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'handleAdmin'])->name('admin.route');//->middleware('admin');
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'index'])->name('login');
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'store']);

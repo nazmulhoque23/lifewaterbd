@@ -5,7 +5,7 @@
             <div class="col-sm-6 col-lg-3">
               <div class="widget widget-about">
                 <a href="">
-                  <img src="frontend/images/logo-footer.png" class="footer-logo" alt="Footer Logo" width="95" height="25">
+                  <img src="/frontend/images/logo-footer.png" class="footer-logo" alt="Footer Logo" width="95" height="25">
                 </a>
                 <p>Praesent dapibus, neque id cursus ucibus, tortor neque egestas augue, eu vulputate magna eros eu erat. </p>
                 <div class="social-icons">

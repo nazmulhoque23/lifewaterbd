@@ -22,7 +22,7 @@
     </script>
     <link rel="stylesheet" href="{{ asset('frontend/css/index.css')}}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.9.1/font/bootstrap-icons.css">
-    <title>Hello, world!</title>
+    <title>Single Product page</title>
 </head>
 
 <body>
@@ -86,7 +86,7 @@
                     Details</button>
 
                 <div class="row">
-                    <table class="table table-bordered" style="width:10%; margin-left:20px;">
+                    <!--<table class="table table-bordered" style="width:10%; margin-left:20px;">
                         <tr>
                             <td><button type="submit"><i class="material-icons">&#xe15b;</i></button></td>
                             <td>1</td>
@@ -94,9 +94,9 @@
 
 
                         </tr>
-                    </table>
-                    <button type="button" class="btn btn-warning"
-                        style=" width:30%; margin-left:20px; margin-bottom:10px;">Add to Cart</button>
+                    </table>-->
+                    <a href = "{{route('addtocart', $product->id)}}" class="btn btn-warning"
+                        style=" width:30%; margin-left:20px; margin-bottom:10px;" role= "button">Add to Cart</a>
                     <button type="button" class="btn btn-dark"
                         style=" width:30%; margin-left:20px; margin-bottom:10px;">Buy Now</button>
                 </div>

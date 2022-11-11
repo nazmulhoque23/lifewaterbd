@@ -15,7 +15,7 @@
             @if($product->separation == "new arrival")
             <div class="product">
               <figure class="figure">
-                <a href="">
+                <a href="{{route('productview', $product->id)}}">
                   <img src="frontend/images/products/{{$product->image}}" alt="" class="">
                 </a>
               </figure>

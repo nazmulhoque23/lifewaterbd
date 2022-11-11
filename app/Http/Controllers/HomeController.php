@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
-
+use Auth;
 
 class HomeController extends Controller
 {
@@ -32,5 +32,65 @@ class HomeController extends Controller
         return view('frontend.productview', compact('product'));
     }
 
+    public function cart()
+    {
+        
+        return view('frontend.cart');
+    }
+
+    public function addToCart($id)
+    {
+        if(Auth::check()){
+            $user = Auth::user()->id;
+        $product = Product::findOrFail($id);
+
+        $cart = session()->get('cart'.$user,[]);
+
+        if(isset($cart[$id])){
+            $cart[$id]['quantity']++;
+        }
+        else{
+            $cart[$id] = [
+                "name" => $product->name,
+                "quantity" => 1,
+                "price" => $product->price,
+                "image" => $product->image
+            ];
+        }
+
+        session()->put('cart'.$user, $cart);
+        //dd(session()->get('cart'));
+        return redirect()->back()->with('success', 'Product added to cart successfully');
+        }
+        
+    }
+
+    public function update(Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user()->id;
+           if($request->id && $request->quantity){
+            $cart = session()->get('cart'.$user);
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart'.$user, $cart);
+            session()->flash('success', 'Cart updated successfully');
+        }
+    }
+    }
+
+    public function remove(Request $request)
+    {
+        if(Auth::check()){
+            $user = Auth::user()->id;
+        if($request->id) {
+            $cart = session()->get('cart'.$user);
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart'.$user, $cart);
+            }
+            session()->flash('success', 'Product removed successfully');
+        }
+    }
+    }
 
 }
