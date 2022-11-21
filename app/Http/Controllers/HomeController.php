@@ -40,14 +40,15 @@ class HomeController extends Controller
         return view('frontend.cart');
     }
 
-    public function addToCart($id)
+    public function addToCart(Request $request, $id)
     {
+        
         if(Auth::check()){
             $user = Auth::user()->id;
             $product = Product::findOrFail($id);
 
+            
             $cart = session()->get('cart'.$user,[]);
-
             if(isset($cart[$id])){
                 $cart[$id]['quantity']++;
             }

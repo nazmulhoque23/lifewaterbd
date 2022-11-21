@@ -80,9 +80,7 @@
 
                     </tr>
                     <tr>
-                    <td data-th="Quantity">
-                        <input type="number" value ="1" class="form-control quantity update-cart" style="width: 100px;" />
-                    </td>
+                    
                 </tr>
                 </table>
                 <button type="button" class="btn btn-dark"

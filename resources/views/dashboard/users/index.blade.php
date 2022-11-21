@@ -49,8 +49,10 @@
             <td>{{ $user->email }}</td>
             <td>
             <ul class = "sclist" style="list-style: none;">
-                @foreach($user->order as $orderproduct)
-                    <li><i class = "fa fa-caret-right"></i>{{$orderproduct->product_id}}=>amount: {{$orderproduct->quantity}} </li>
+                @foreach($orders as $order)
+                @if($user->id == $order->user_id)
+                    <li><i class = "fa fa-caret-right"></i>{{$order->product->name}}=>amount: {{$order->quantity}}, price: {{$order->price}} </li>
+                @endif
                 @endforeach    
             </ul>
         </td>
