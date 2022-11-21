@@ -58,7 +58,25 @@
         </td>
             <td>
 
-                <form action="" method="POST">
+                <button type="submit" class="btn btn-primary" data-target="#editModal{{$user->id}}" data-toggle="modal">Edit</button>
+                <div class="modal fade" id="editModal{{$user->id}}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                    <div class="modal-dialog" role="document">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">User Edit</h5>
+                                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                </button>
+                            </div>
+                            
+                               
+                            @include('dashboard.users.edit')
+                            
+                            
+                        </div>
+                    </div>
+                </div>
+                <form action="{{route('users.destroy', $user->id)}}" method="POST">
      
                     @csrf
                     @method('DELETE')
@@ -68,7 +86,7 @@
                     
                     
                 </form>
-               
+                
             </td>
         </tr>
         @endforeach
