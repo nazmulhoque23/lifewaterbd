@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Product;
+use App\Models\Order;
+use App\Models\User;
 use Auth;
 
 class HomeController extends Controller
@@ -42,25 +44,25 @@ class HomeController extends Controller
     {
         if(Auth::check()){
             $user = Auth::user()->id;
-        $product = Product::findOrFail($id);
+            $product = Product::findOrFail($id);
 
-        $cart = session()->get('cart'.$user,[]);
+            $cart = session()->get('cart'.$user,[]);
 
-        if(isset($cart[$id])){
-            $cart[$id]['quantity']++;
-        }
-        else{
-            $cart[$id] = [
-                "name" => $product->name,
-                "quantity" => 1,
-                "price" => $product->price,
-                "image" => $product->image
-            ];
-        }
+            if(isset($cart[$id])){
+                $cart[$id]['quantity']++;
+            }
+            else{
+                $cart[$id] = [
+                    "name" => $product->name,
+                    "quantity" => 1,
+                    "price" => $product->price,
+                    "image" => $product->image
+                ];
+            }
 
-        session()->put('cart'.$user, $cart);
+            session()->put('cart'.$user, $cart);
         //dd(session()->get('cart'));
-        return redirect()->back()->with('success', 'Product added to cart successfully');
+            return redirect()->back()->with('success', 'Product added to cart successfully');
         }
         
     }
@@ -91,6 +93,63 @@ class HomeController extends Controller
             session()->flash('success', 'Product removed successfully');
         }
     }
+    }
+
+    public function order($id)
+    {
+        if(Auth::check()){
+            $user = Auth::user()->id;
+           
+            $product = Product::findOrFail($id);
+
+            $cart = session()->get('cart'.$user,[]);
+
+            if(isset($cart[$id])){
+                $cart[$id]['quantity']++;
+            }
+            else{
+                $cart[$id] = [
+                    "name" => $product->name,
+                    "quantity" => 1,
+                    "price" => $product->price,
+                    "image" => $product->image
+                ];
+            }
+
+            session()->put('cart'.$user, $cart);
+        //dd(session()->get('cart'));
+        
+        }   
+        return redirect('/products/cart');
+    }
+
+    public function orderList()
+    {
+        return view('frontend.Order');
+    }
+
+    public function storeOrder()
+    {
+        
+        if(Auth::check()){
+            $user = Auth::user()->id;
+            $cart = session()->get('cart'.$user,[]);
+
+            foreach($cart as $id=>$details){
+                $order = new Order;
+                $order->user_id = Auth::user()->id;
+                $order->product_id = $id;
+                $order->quantity = $details['quantity'];
+                $order->price = $details['price'] * $details['quantity'];
+
+                $order->save();
+                
+                
+            }
+            
+            session()->forget('cart'.$user);
+            return redirect()->back()->with('message', "order added");
+        }
     }
 
 }

@@ -21,7 +21,7 @@
             </a>
           </div>
           <h3 class="p_title">{{$product->name}}</h3>
-          <span class="price">{{$product->price}}</span>
+          <span class="price">${{$product->price}}</span>
         </div>
 
         @endif

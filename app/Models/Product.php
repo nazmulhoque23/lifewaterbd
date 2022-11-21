@@ -22,4 +22,8 @@ class Product extends Model
     {
         return $this->belongsTo('App\Models\Brand');
     }
+
+    public function order(){
+        return $this->hasMany('App\Models\Order');
+    }
 }

@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\Dahsboard\CategoryController;
 use App\Http\Controllers\Dahsboard\ProductController;
 use App\Http\Controllers\Dahsboard\BrandController;
+use App\Http\Controllers\Dahsboard\UserDashboardController;
 
 /*
 |--------------------------------------------------------------------------
@@ -31,6 +32,9 @@ Route::get('/products/add-to-cart/{id}', [App\Http\Controllers\HomeController::c
 Route::patch('/products/update-cart', [App\Http\Controllers\HomeController::class, 'update'])->name('updatecart');
 Route::delete('/products/delete-from-cart', [App\Http\Controllers\HomeController::class, 'remove'])->name('removeitem');
 
+Route::get('/products/order/{id}', [App\Http\Controllers\HomeController::class, 'order'])->name('cartview2');
+Route::get('/products/order-list',[App\Http\Controllers\HomeController::class, 'orderList'])->name('orderList');
+Route::get('/products/order-store', [App\Http\Controllers\HomeController::class, 'storeOrder'])->name('storeorder');
 //Route::get('/admin/home', [App\Http\Controllers\HomeController::class, 'handleAdmin'])->name('admin.route');//->middleware('admin');
 Route::get('/login', [App\Http\Controllers\AuthController::class, 'index'])->name('login');
 Route::post('/login', [App\Http\Controllers\AuthController::class, 'store']);
@@ -48,6 +52,7 @@ Route::get('/admin/home', [App\Http\Controllers\Dahsboard\HomeController::class,
 Route::resource('/admin/categories', CategoryController::class)->middleware('admin');
 Route::resource('/admin/brands', BrandController::class)->middleware('admin');
 Route::resource('/admin/products', ProductController::class)->middleware('admin');
+Route::resource('/admin/users', UserDashboardController::class)->middleware('admin');
 
 /*Route::get('/admin/products',[ProductController::class, 'index'])->name('products.index')->middleware('admin');
 Route::post('/admin/products',[ProductController::class, 'store'])->name('products.store')->middleware('admin');

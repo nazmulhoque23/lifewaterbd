@@ -79,7 +79,11 @@
                         <td style="text-align: right; font-weight:normal;">{{$product->technology}}</td>
 
                     </tr>
-
+                    <tr>
+                    <td data-th="Quantity">
+                        <input type="number" value ="1" class="form-control quantity update-cart" style="width: 100px;" />
+                    </td>
+                </tr>
                 </table>
                 <button type="button" class="btn btn-dark"
                     style="backgroung-color:green; width:30%; margin-left:20px; margin-bottom:10px;">EMI Bank
@@ -97,8 +101,8 @@
                     </table>-->
                     <a href = "{{route('addtocart', $product->id)}}" class="btn btn-warning"
                         style=" width:30%; margin-left:20px; margin-bottom:10px;" role= "button">Add to Cart</a>
-                    <button type="button" class="btn btn-dark"
-                        style=" width:30%; margin-left:20px; margin-bottom:10px;">Buy Now</button>
+                    <a href = "{{route('cartview2',$product->id)}}"  class="btn btn-dark"
+                        style=" width:30%; margin-left:20px; margin-bottom:10px;" role= "button">Buy Now</a>
                 </div>
 
                 <p style="margin-left: 20px; margin-top:10px;"> Call for Order: 017123456779</p>

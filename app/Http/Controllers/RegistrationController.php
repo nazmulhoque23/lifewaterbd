@@ -29,6 +29,7 @@ class RegistrationController extends Controller
         'name'=>$data['name'],
         'email'=>$data['email'],
         'mobile_no'=>$data['mobile_no'],
+        'address'=>$data['address'],
         'is_admin'=>0,
         'password'=>Hash::make($data['password'])
        ]);
@@ -47,6 +48,7 @@ class RegistrationController extends Controller
             'email' => 'required|email|unique:users',
             'mobile_no'=>'required',
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'address'=>'required',
         ]);
         
         $data = $request->all();

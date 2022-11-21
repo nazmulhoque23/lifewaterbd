@@ -59,6 +59,15 @@
         <ul class="nav nav-treeview">
 
           <li class="nav-item menu-open">
+            <a href="{{route('users.index')}}" class="nav-link active">
+              <i class="nav-icon fas fa-tachometer-alt"></i>
+              <p>
+                Users
+              </p>
+            </a>
+          </li>
+
+          <li class="nav-item menu-open">
             <a href="{{route('categories.index')}}" class="nav-link active">
               <i class="nav-icon fas fa-tachometer-alt"></i>
               <p>
